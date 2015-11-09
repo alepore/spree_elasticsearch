@@ -4,7 +4,7 @@ module Spree
     #   * taxon
     #   * keywords in name or description
     #   * properties values
-    class Elasticsearch <  Spree::Core::Search::Base
+    class Elasticsearch < Core::Search::Base
       include ::Virtus.model
 
       attribute :query, String
@@ -18,14 +18,14 @@ module Spree
       attribute :sorting, String
 
       def initialize(params)
-        self.current_currency = Spree::Config[:currency]
+        self.current_currency = Config[:currency]
         prepare(params)
       end
 
       def retrieve_products
-        from = (@page - 1) * Spree::Config.products_per_page
-        search_result = Spree::Product.__elasticsearch__.search(
-          Spree::Product::ElasticsearchQuery.new(
+        from = (@page - 1) * Config.products_per_page
+        search_result = Product.__elasticsearch__.search(
+          Product::ElasticsearchQuery.new(
             query: query,
             taxons: taxons,
             browse_mode: browse_mode,
@@ -55,7 +55,7 @@ module Spree
           @properties = params[:search][:properties]
         end
 
-        @per_page = (params[:per_page].to_i <= 0) ? Spree::Config[:products_per_page] : params[:per_page].to_i
+        @per_page = (params[:per_page].to_i <= 0) ? Config[:products_per_page] : params[:per_page].to_i
         @page = (params[:page].to_i <= 0) ? 1 : params[:page].to_i
       end
     end
