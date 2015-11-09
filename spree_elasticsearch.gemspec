@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'elasticsearch-model'
-  s.add_dependency 'elasticsearch-rails'
-  s.add_dependency 'settingslogic'
+  s.add_dependency 'elasticsearch-model', '~> 0.1.8'
+  s.add_dependency 'elasticsearch-rails', '~> 0.1.8'
+  s.add_dependency 'settingslogic', '~> 2.0.9'
   s.add_dependency 'spree_core', '~> 3.0.0'
-  s.add_dependency 'virtus'
+  s.add_dependency 'virtus', '~> 1.0.5'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'
